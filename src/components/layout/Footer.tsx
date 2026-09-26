@@ -59,7 +59,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
                   <button
                     type="button"
                     onClick={() => onSelectNav(item.id)}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 rounded-full text-neutral-400 hover:text-white hover:bg-neutral-900 transition-all text-left cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 text-neutral-400 hover:text-white hover:bg-neutral-900 transition-all text-left cursor-pointer rounded-[3px]"
                   >
                     <span>{item.label}</span>
                   </button>
@@ -78,7 +78,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
                 <button
                   type="button"
                   onClick={() => onSelectNav('visitas')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 rounded-full hover:text-white hover:bg-neutral-900 transition-all cursor-pointer text-left"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 hover:text-white hover:bg-neutral-900 transition-all cursor-pointer text-left rounded-[3px]"
                 >
                   Visitas Pedagógicas
                 </button>
@@ -87,7 +87,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
                 <button
                   type="button"
                   onClick={() => onSelectNav('historias')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 rounded-full hover:text-white hover:bg-neutral-900 transition-all cursor-pointer text-left"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 hover:text-white hover:bg-neutral-900 transition-all cursor-pointer text-left rounded-[3px]"
                 >
                   Tradição Oral
                 </button>
@@ -96,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
                 <button
                   type="button"
                   onClick={() => onSelectNav('manual')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 rounded-full hover:text-white hover:bg-neutral-900 transition-all cursor-pointer text-left"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 hover:text-white hover:bg-neutral-900 transition-all cursor-pointer text-left rounded-[3px]"
                 >
                   Manual de Conduta
                 </button>
@@ -105,7 +105,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
                 <button
                   type="button"
                   onClick={() => onSelectNav('sobre')}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 rounded-full hover:text-white hover:bg-neutral-900 transition-all cursor-pointer text-left"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 hover:text-white hover:bg-neutral-900 transition-all cursor-pointer text-left rounded-[3px]"
                 >
                   Projeto de Extensão
                 </button>
@@ -123,7 +123,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
             </p>
 
             {subscribed ? (
-              <div className="p-3.5 rounded-2xl bg-emerald-950/80 border border-emerald-600/50 text-emerald-300 text-xs flex items-center gap-2">
+              <div className="p-3.5 bg-emerald-950/80 border border-emerald-600/50 text-emerald-300 text-xs flex items-center gap-2 rounded-[3px]">
                 <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-400" />
                 <span>Obrigado! Seu e-mail foi cadastrado.</span>
               </div>
@@ -136,11 +136,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Seu e-mail institucional"
-                    className="w-full pl-4 pr-12 py-2.5 text-xs bg-neutral-900 border border-neutral-800 rounded-full text-white placeholder-neutral-500 focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000] transition-colors"
+                    className="w-full pl-4 pr-12 py-2.5 text-xs bg-neutral-900 border border-neutral-800 text-white placeholder-neutral-500 focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000] transition-colors rounded-[3px]"
                   />
                   <button
                     type="submit"
-                    className="absolute right-1 w-8 h-8 rounded-full bg-[#8B0000] hover:bg-[#a50000] active:scale-90 text-white flex items-center justify-center transition-all cursor-pointer shadow-sm"
+                    className="absolute right-1 w-8 h-8 bg-[#8B0000] hover:bg-[#a50000] active:scale-90 text-white flex items-center justify-center transition-all cursor-pointer shadow-sm rounded-[3px]"
                     title="Inscrever-se"
                   >
                     <Send className="w-3.5 h-3.5" />
@@ -162,7 +162,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
             <button
               type="button"
               onClick={() => onSelectNav('manual')}
-              className="px-3 py-1 rounded-full hover:text-white hover:bg-neutral-900 transition-colors cursor-pointer"
+              className="px-3 py-1 hover:text-white hover:bg-neutral-900 transition-colors cursor-pointer rounded-[3px]"
             >
               Manual de Conduta
             </button>
@@ -170,7 +170,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
             <button
               type="button"
               onClick={() => onSelectNav('sobre')}
-              className="px-3 py-1 rounded-full hover:text-white hover:bg-neutral-900 transition-colors cursor-pointer"
+              className="px-3 py-1 hover:text-white hover:bg-neutral-900 transition-colors cursor-pointer rounded-[3px]"
             >
               Sobre o Projeto
             </button>

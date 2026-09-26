@@ -32,7 +32,7 @@ export const CultureSection: React.FC<CultureSectionProps> = ({ mode, onSelectNa
             whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
             viewport={{ once: false, amount: 0.25 }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-xl lg:max-w-[580px] xl:max-w-[640px] 2xl:max-w-[700px] bg-white rounded-2xl sm:rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.5)] p-6 sm:p-10 md:p-12 xl:p-14 border border-black/10"
+            className="w-full max-w-xl lg:max-w-[580px] xl:max-w-[640px] 2xl:max-w-[700px] bg-white shadow-[0_25px_60px_rgba(0,0,0,0.5)] p-6 sm:p-10 md:p-12 xl:p-14 border border-black/10 rounded-[3px]"
           >
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export const CultureSection: React.FC<CultureSectionProps> = ({ mode, onSelectNa
                 <button
                   type="button"
                   onClick={() => onSelectNav('manual')}
-                  className="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#8B0000] hover:bg-[#a30000] active:scale-95 text-white text-xs sm:text-sm font-bold tracking-wide shadow-md hover:shadow-lg transition-all cursor-pointer"
+                  className="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#8B0000] hover:bg-[#a30000] active:scale-95 text-white text-xs sm:text-sm font-bold tracking-wide shadow-md hover:shadow-lg transition-all cursor-pointer rounded-[3px]"
                 >
                   <ShieldAlert className="w-4 h-4 text-white/90" />
                   <span>Manual de Conduta</span>
@@ -76,7 +76,7 @@ export const CultureSection: React.FC<CultureSectionProps> = ({ mode, onSelectNa
                 <button
                   type="button"
                   onClick={() => onSelectNav('fale-conosco')}
-                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-neutral-100 hover:bg-neutral-200 active:scale-95 text-neutral-800 text-xs sm:text-sm font-semibold tracking-wide border border-neutral-300/80 transition-all cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-neutral-100 hover:bg-neutral-200 active:scale-95 text-neutral-800 text-xs sm:text-sm font-semibold tracking-wide border border-neutral-300/80 transition-all cursor-pointer rounded-[3px]"
                 >
                   <Mail className="w-4 h-4 text-neutral-600" />
                   <span>Fale Conosco</span>
@@ -85,7 +85,7 @@ export const CultureSection: React.FC<CultureSectionProps> = ({ mode, onSelectNa
             )}
           </motion.div>
 
-          {/* Right: Foto Arredondada com Borda e Sombra */}
+          {/* Right: Foto com Bordas Arredondadas de 3px */}
           <motion.div
             initial={{ opacity: 0, x: 50, scale: 0.94, filter: 'blur(8px)' }}
             whileInView={{ opacity: 1, x: 0, scale: 1, filter: 'blur(0px)' }}
@@ -93,7 +93,7 @@ export const CultureSection: React.FC<CultureSectionProps> = ({ mode, onSelectNa
             transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="w-full max-w-xs sm:max-w-sm md:max-w-[360px] lg:max-w-[360px] xl:max-w-[420px] 2xl:max-w-[460px] shrink-0"
           >
-            <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.55)] border-2 border-black bg-neutral-900 aspect-[3/4]">
+            <div className="overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.55)] border-2 border-black bg-neutral-900 aspect-[3/4] rounded-[3px]">
               <img
                 src={cultureImageSrc}
                 alt="Celebração cultural tradicional indígena"

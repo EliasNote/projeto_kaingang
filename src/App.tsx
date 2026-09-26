@@ -101,7 +101,7 @@ function MainApp() {
             Conheça os espaços onde a educação tradicional e a preservação ambiental se unem no dia a dia da comunidade escolar.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            <div className="border border-neutral-200 rounded-lg p-3 hover:border-[#8B0000] transition-colors">
+            <div className="border border-neutral-200 p-3 hover:border-[#8B0000] transition-colors rounded-[3px]">
               <div className="flex items-center gap-2 text-[#8B0000] font-bold text-xs uppercase mb-1">
                 <Compass className="w-4 h-4" />
                 <span>Trilha das Ervas Medicinais</span>
@@ -110,7 +110,7 @@ function MainApp() {
                 Passeio guiado pelas espécies catalogadas pelas mulheres e anciãs da aldeia.
               </p>
             </div>
-            <div className="border border-neutral-200 rounded-lg p-3 hover:border-[#8B0000] transition-colors">
+            <div className="border border-neutral-200 p-3 hover:border-[#8B0000] transition-colors rounded-[3px]">
               <div className="flex items-center gap-2 text-[#8B0000] font-bold text-xs uppercase mb-1">
                 <BookOpen className="w-4 h-4" />
                 <span>Casa de Saberes &amp; Cânticos</span>
@@ -134,14 +134,14 @@ function MainApp() {
             A tradição oral é a base da nossa transmissão de conhecimento, preservando o valor do respeito à floresta, às águas e aos ancestrais.
           </p>
           <div className="space-y-2">
-            <div className="p-3 bg-neutral-50 rounded-lg border border-neutral-200 flex items-start gap-3">
+            <div className="p-3 bg-neutral-50 border border-neutral-200 flex items-start gap-3 rounded-[3px]">
               <Headphones className="w-5 h-5 text-[#8B0000] shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-xs font-bold text-neutral-900">O Canto das Sementes Nativas</h4>
                 <p className="text-xs text-neutral-600">Áudio registrado na colheita das sementes da sumaúma e açaí.</p>
               </div>
             </div>
-            <div className="p-3 bg-neutral-50 rounded-lg border border-neutral-200 flex items-start gap-3">
+            <div className="p-3 bg-neutral-50 border border-neutral-200 flex items-start gap-3 rounded-[3px]">
               <Headphones className="w-5 h-5 text-[#8B0000] shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-xs font-bold text-neutral-900">A Criação do Rio e das Matas</h4>
@@ -159,7 +159,7 @@ function MainApp() {
         subtitle="Diretrizes de respeito ao território e aos saberes tradicionais"
       >
         <div className="space-y-3">
-          <div className="flex items-start gap-3 p-3 bg-amber-50 rounded-lg border border-amber-200 text-amber-900">
+          <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 text-amber-900 rounded-[3px]">
             <ShieldAlert className="w-5 h-5 shrink-0 text-amber-700 mt-0.5" />
             <p className="text-xs">
               Todo o conteúdo visual e oral deste acervo pertence coletivamente à comunidade indígena e segue o protocolo de consulta prévia, livre e informada.
@@ -199,7 +199,7 @@ function MainApp() {
                 value={contactName}
                 onChange={(e) => setContactName(e.target.value)}
                 placeholder="Ex: Escola Municipal / Prof. Ana Silva"
-                className="w-full px-3.5 py-2.5 text-xs border border-neutral-300 rounded-xl focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000] transition-colors"
+                className="w-full px-3.5 py-2.5 text-xs border border-neutral-300 focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000] transition-colors rounded-[3px]"
               />
             </div>
             <div>
@@ -212,7 +212,7 @@ function MainApp() {
                 value={contactEmail}
                 onChange={(e) => setContactEmail(e.target.value)}
                 placeholder="seu.email@instituicao.org"
-                className="w-full px-3.5 py-2.5 text-xs border border-neutral-300 rounded-xl focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000] transition-colors"
+                className="w-full px-3.5 py-2.5 text-xs border border-neutral-300 focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000] transition-colors rounded-[3px]"
               />
             </div>
             <div>
@@ -224,7 +224,7 @@ function MainApp() {
                 value={contactSubject}
                 onChange={(e) => setContactSubject(e.target.value)}
                 placeholder="Visita pedagógica, intercâmbio, etc."
-                className="w-full px-3.5 py-2.5 text-xs border border-neutral-300 rounded-xl focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000] transition-colors"
+                className="w-full px-3.5 py-2.5 text-xs border border-neutral-300 focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000] transition-colors rounded-[3px]"
               />
             </div>
             <div>
@@ -237,12 +237,12 @@ function MainApp() {
                 value={contactMessage}
                 onChange={(e) => setContactMessage(e.target.value)}
                 placeholder="Descreva seu interesse de contato..."
-                className="w-full px-3.5 py-2.5 text-xs border border-neutral-300 rounded-xl focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000] resize-none transition-colors"
+                className="w-full px-3.5 py-2.5 text-xs border border-neutral-300 focus:outline-none focus:border-[#8B0000] focus:ring-1 focus:ring-[#8B0000] resize-none transition-colors rounded-[3px]"
               />
             </div>
             <button
               type="submit"
-              className="w-full py-3 px-5 bg-[#8B0000] hover:bg-[#a50000] active:scale-95 text-white font-bold text-xs rounded-full transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-lg mt-2"
+              className="w-full py-3 px-5 bg-[#8B0000] hover:bg-[#a50000] active:scale-95 text-white font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-lg mt-2 rounded-[3px]"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Enviar Mensagem</span>

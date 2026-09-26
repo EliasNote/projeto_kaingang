@@ -41,7 +41,7 @@ export const Modal: React.FC<ModalProps> = ({
       aria-labelledby="modal-title"
     >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-neutral-200 animate-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-2xl bg-white shadow-2xl overflow-hidden border border-neutral-200 animate-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col rounded-[3px]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -59,7 +59,7 @@ export const Modal: React.FC<ModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 text-white flex items-center justify-center transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer"
+            className="w-9 h-9 bg-white/10 hover:bg-white/20 active:scale-90 text-white flex items-center justify-center transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer rounded-[3px]"
             aria-label="Fechar modal"
           >
             <X className="w-5 h-5" />
@@ -76,7 +76,7 @@ export const Modal: React.FC<ModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="px-6 py-2.5 text-xs font-bold text-white bg-[#8B0000] hover:bg-[#a50000] active:scale-95 rounded-full transition-all shadow-md hover:shadow-lg cursor-pointer"
+            className="px-6 py-2.5 text-xs font-bold text-white bg-[#8B0000] hover:bg-[#a50000] active:scale-95 transition-all shadow-md hover:shadow-lg cursor-pointer rounded-[3px]"
           >
             Fechar
           </button>

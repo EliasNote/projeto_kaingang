@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion, MotionValue } from 'framer-motion';
+import React from "react";
+import { motion, MotionValue } from "framer-motion";
 
 interface TreeTrunksForegroundProps {
   xLeft: MotionValue<number>;
@@ -25,7 +25,7 @@ export const TreeTrunksForeground: React.FC<TreeTrunksForegroundProps> = ({
     >
       {/* Tronco da Esquerda Real (Abertura / Portal para a esquerda com Framer Motion) */}
       <motion.div
-        className="absolute -top-[12%] -bottom-[12%] left-0 w-20 sm:w-32 md:w-48 lg:w-64 xl:w-80 2xl:w-92 h-[124%] will-change-transform origin-left"
+        className="absolute left-0 w-28 sm:w-40 md:w-56 lg:w-72 xl:w-88 2xl:w-[420px] h-full will-change-transform origin-left"
         style={{
           x: xLeft,
           y: yLeft,
@@ -33,7 +33,7 @@ export const TreeTrunksForeground: React.FC<TreeTrunksForegroundProps> = ({
         }}
       >
         <img
-          src="/images/trunk_left.png"
+          src="/images/tronco_2.png"
           alt=""
           className="w-full h-full object-cover object-left filter drop-shadow-[12px_0_25px_rgba(0,0,0,0.55)] contrast-105 brightness-95"
           referrerPolicy="no-referrer"
@@ -43,7 +43,7 @@ export const TreeTrunksForeground: React.FC<TreeTrunksForegroundProps> = ({
 
       {/* Tronco da Direita Real (Abertura / Portal para a direita com Framer Motion) */}
       <motion.div
-        className="absolute -top-[12%] -bottom-[12%] right-0 w-20 sm:w-32 md:w-48 lg:w-64 xl:w-80 2xl:w-92 h-[124%] will-change-transform origin-right"
+        className="absolute right-0 w-28 sm:w-40 md:w-56 lg:w-72 xl:w-88 2xl:w-[420px] h-full will-change-transform origin-right"
         style={{
           x: xRight,
           y: yRight,
@@ -51,7 +51,7 @@ export const TreeTrunksForeground: React.FC<TreeTrunksForegroundProps> = ({
         }}
       >
         <img
-          src="/images/trunk_right.png"
+          src="/images/tronco_1.png"
           alt=""
           className="w-full h-full object-cover object-right filter drop-shadow-[-12px_0_25px_rgba(0,0,0,0.55)] contrast-105 brightness-95"
           referrerPolicy="no-referrer"

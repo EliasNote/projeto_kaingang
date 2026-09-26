@@ -52,7 +52,7 @@ export const ImageManagerModal: React.FC<ImageManagerModalProps> = ({ isOpen, on
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-3xl bg-neutral-900 text-white rounded-xl shadow-2xl border border-neutral-700 overflow-hidden flex flex-col max-h-[90vh]"
+        className="relative w-full max-w-3xl bg-neutral-900 text-white shadow-2xl border border-neutral-700 overflow-hidden flex flex-col max-h-[90vh] rounded-[3px]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -66,7 +66,7 @@ export const ImageManagerModal: React.FC<ImageManagerModalProps> = ({ isOpen, on
           <button
             type="button"
             onClick={onClose}
-            className="p-1 rounded-md text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-1 text-white/80 hover:text-white hover:bg-white/10 transition-colors rounded-[3px]"
           >
             <X className="w-5 h-5" />
           </button>
@@ -75,7 +75,7 @@ export const ImageManagerModal: React.FC<ImageManagerModalProps> = ({ isOpen, on
         {/* Body */}
         <div className="p-6 overflow-y-auto space-y-6 text-sm">
           {/* Info note explaining how AI Studio uploads work */}
-          <div className="p-3.5 bg-neutral-800/80 border border-neutral-700 rounded-lg text-xs leading-relaxed text-neutral-300">
+          <div className="p-3.5 bg-neutral-800/80 border border-neutral-700 text-xs leading-relaxed text-neutral-300 rounded-[3px]">
             <div className="font-semibold text-white mb-1 flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-amber-400" />
               <span>Por que suas fotos originais não carregaram sozinhas?</span>
@@ -92,7 +92,7 @@ export const ImageManagerModal: React.FC<ImageManagerModalProps> = ({ isOpen, on
             onDragLeave={() => setDragOver(false)}
             onDrop={onDrop}
             onClick={() => fileInputRef.current?.click()}
-            className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-all ${
+            className={`border-2 border-dashed p-6 text-center cursor-pointer transition-all rounded-[3px] ${
               dragOver
                 ? 'border-emerald-400 bg-emerald-950/30'
                 : 'border-neutral-700 hover:border-neutral-500 bg-neutral-950/50'
@@ -116,7 +116,7 @@ export const ImageManagerModal: React.FC<ImageManagerModalProps> = ({ isOpen, on
           </div>
 
           {uploadMsg && (
-            <div className="p-3 bg-emerald-950 border border-emerald-500/50 text-emerald-200 rounded-lg flex items-center gap-2 text-xs font-medium">
+            <div className="p-3 bg-emerald-950 border border-emerald-500/50 text-emerald-200 flex items-center gap-2 text-xs font-medium rounded-[3px]">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>{uploadMsg}</span>
             </div>
@@ -133,12 +133,12 @@ export const ImageManagerModal: React.FC<ImageManagerModalProps> = ({ isOpen, on
                 return (
                   <div
                     key={slot.key}
-                    className="flex items-center gap-3 p-3 bg-neutral-800/60 border border-neutral-700 rounded-lg"
+                    className="flex items-center gap-3 p-3 bg-neutral-800/60 border border-neutral-700 rounded-[3px]"
                   >
                     <img
                       src={currentSrc}
                       alt={slot.label}
-                      className="w-14 h-14 object-cover rounded-md border border-neutral-600 shrink-0 bg-neutral-900"
+                      className="w-14 h-14 object-cover border border-neutral-600 shrink-0 bg-neutral-900 rounded-[3px]"
                       referrerPolicy="no-referrer"
                     />
                     <div className="min-w-0 flex-1">
@@ -178,7 +178,7 @@ export const ImageManagerModal: React.FC<ImageManagerModalProps> = ({ isOpen, on
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1.5 bg-[#8B0000] hover:bg-[#a00000] text-white font-semibold rounded-md transition-colors"
+            className="px-4 py-1.5 bg-[#8B0000] hover:bg-[#a00000] text-white font-semibold transition-colors rounded-[3px]"
           >
             Concluído
           </button>

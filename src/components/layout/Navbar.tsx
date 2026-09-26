@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
             <a
               href="#inicio"
               onClick={(e) => handleNavClick('inicio', e)}
-              className="flex items-center py-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer rounded-lg"
+              className="flex items-center py-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer rounded-[3px]"
               aria-label="Página Inicial - Memórias da Escola"
             >
               <IndigenousLogo variant="navbar-logo" />
@@ -69,20 +69,17 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
                     key={item.id}
                     href={item.href}
                     onClick={(e) => handleNavClick(item.id, e)}
-                    className={`px-3.5 py-1.5 rounded-full text-[13px] 2xl:text-[14px] font-medium transition-all relative whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer ${
-                      isActive
-                        ? 'bg-black/30 text-white font-bold shadow-inner'
-                        : 'text-white/90 hover:text-white hover:bg-white/10'
+                    className={`group relative px-3.5 py-2 text-[13px] 2xl:text-[14px] font-medium transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer ${
+                      isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white'
                     }`}
                   >
-                    {item.label}
-                    {isActive && (
-                      <motion.span
-                        layoutId="activeNavIndicator"
-                        className="absolute bottom-1 left-3 right-3 h-[2px] bg-white rounded-full"
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                      />
-                    )}
+                    <span>{item.label}</span>
+                    {/* Borda inferior animada que cresce da esquerda para a direita */}
+                    <span
+                      className={`absolute bottom-0 left-0 h-[2px] bg-white transition-all duration-300 ease-out origin-left ${
+                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
                   </a>
                 );
               })}
@@ -90,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
 
             {/* Medium screen navigation (Tablets) */}
             <nav
-              className="hidden lg:flex xl:hidden items-center gap-1.5 text-xs font-medium"
+              className="hidden lg:flex xl:hidden items-center gap-1 text-xs font-medium"
               aria-label="Navegação Tablet"
             >
               {NAVIGATION_ITEMS.map((item) => {
@@ -100,13 +97,17 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
                     key={item.id}
                     href={item.href}
                     onClick={(e) => handleNavClick(item.id, e)}
-                    className={`px-3 py-1.5 rounded-full transition-all whitespace-nowrap cursor-pointer ${
-                      isActive
-                        ? 'bg-black/30 text-white font-bold'
-                        : 'text-white/85 hover:text-white hover:bg-white/10'
+                    className={`group relative px-2.5 py-2 transition-colors whitespace-nowrap cursor-pointer ${
+                      isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white'
                     }`}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    {/* Borda inferior animada que cresce da esquerda para a direita */}
+                    <span
+                      className={`absolute bottom-0 left-0 h-[2px] bg-white transition-all duration-300 ease-out origin-left ${
+                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
                   </a>
                 );
               })}
@@ -117,7 +118,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 rounded-lg text-white hover:bg-white/10 hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all cursor-pointer"
+                className="p-2 text-white hover:bg-white/10 hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all cursor-pointer rounded-[3px]"
                 aria-expanded={mobileMenuOpen}
                 aria-label="Abrir menu de navegação"
               >
@@ -157,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
                 <button
                   type="button"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 rounded-lg text-white hover:bg-white/10 hover:rotate-90 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all duration-200 cursor-pointer"
+                  className="p-2 text-white hover:bg-white/10 hover:rotate-90 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all duration-200 cursor-pointer rounded-[3px]"
                   aria-label="Fechar menu"
                 >
                   <X className="w-6 h-6 text-white" />
@@ -185,18 +186,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
                       <button
                         type="button"
                         onClick={(e) => handleNavClick(item.id, e)}
-                        className={`group relative w-full text-left px-4 py-3.5 rounded-xl text-lg font-medium transition-all duration-200 ease-out cursor-pointer flex items-center justify-between overflow-hidden ${
-                          isActive
-                            ? 'bg-black/35 text-white font-bold pl-5 shadow-sm'
-                            : 'text-white/85 hover:text-white hover:bg-white/10 hover:pl-5 hover:translate-x-1 active:scale-[0.98]'
+                        className={`group relative w-full text-left px-4 py-3.5 text-lg font-medium transition-colors cursor-pointer flex items-center justify-between overflow-hidden ${
+                          isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white'
                         }`}
                       >
-                        {/* Linha indicadora lateral animada no Hover */}
+                        {/* Linha indicadora inferior que cresce da esquerda para a direita no Hover / Ativo */}
                         <span
-                          className={`absolute left-0 top-2 bottom-2 w-1 rounded-r-full transition-all duration-200 ${
-                            isActive
-                              ? 'bg-white opacity-100 scale-y-100'
-                              : 'bg-white/80 opacity-0 group-hover:opacity-100 group-hover:scale-y-100 scale-y-50'
+                          className={`absolute bottom-0 left-0 h-[2px] bg-white transition-all duration-300 ease-out origin-left ${
+                            isActive ? 'w-full' : 'w-0 group-hover:w-full'
                           }`}
                         />
 
