@@ -94,24 +94,24 @@ export const HeroSection: React.FC = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Top-Left: 3 Barras Pretas Verticais (Frame 17 exato, com proporção harmoniosa em mobile e desktop) */}
+        {/* Top-Left: 3 Barras Pretas Verticais encorpadas e marcantes em todas as telas */}
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute top-0 left-3 sm:left-6 md:left-10 lg:left-14 xl:left-16 z-20 pointer-events-none"
+          className="absolute top-0 left-3 sm:left-5 md:left-8 lg:left-12 xl:left-16 z-20 pointer-events-none"
         >
           <div
-            className="flex items-start gap-1.5 sm:gap-2.5 md:gap-3"
+            className="flex items-start gap-2 sm:gap-2.5 md:gap-3 lg:gap-4"
             aria-hidden="true"
           >
-            <div className="w-4 sm:w-4 md:w-8 lg:w-12 h-14 sm:h-20 md:h-28 lg:h-36 bg-black shadow-lg" />
-            <div className="w-4 sm:w-4 md:w-8 lg:w-12 h-14 sm:h-20 md:h-28 lg:h-36 bg-black shadow-lg" />
-            <div className="w-4 sm:w-4 md:w-8 lg:w-12 h-14 sm:h-20 md:h-28 lg:h-36 bg-black shadow-lg" />
+            <div className="w-7 sm:w-9 md:w-12 lg:w-14 xl:w-16 h-24 sm:h-32 md:h-40 lg:h-44 xl:h-48 bg-black shadow-2xl" />
+            <div className="w-7 sm:w-9 md:w-12 lg:w-14 xl:w-16 h-24 sm:h-32 md:h-40 lg:h-44 xl:h-48 bg-black shadow-2xl" />
+            <div className="w-7 sm:w-9 md:w-12 lg:w-14 xl:w-16 h-24 sm:h-32 md:h-40 lg:h-44 xl:h-48 bg-black shadow-2xl" />
           </div>
         </motion.div>
 
-        {/* Right-Side: 3 Círculos Vermelhos (Exatamente 50% projetados para fora da borda direita) */}
+        {/* Right-Side: 3 Círculos Vermelhos na mesma escala robusta */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
@@ -119,12 +119,12 @@ export const HeroSection: React.FC = () => {
           className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 z-20 pointer-events-none"
         >
           <div
-            className="flex flex-col items-center gap-2 sm:gap-3.5 md:gap-4.5 lg:gap-6"
+            className="flex flex-col items-center gap-3 sm:gap-3.5 md:gap-4.5 lg:gap-6"
             aria-hidden="true"
           >
-            <div className="w-10 h-10 sm:w-16 sm:h-16 md:w-22 md:h-22 lg:w-28 lg:h-28 rounded-full bg-[#E51E2B] shadow-2xl transition-transform hover:scale-105" />
-            <div className="w-10 h-10 sm:w-16 sm:h-16 md:w-22 md:h-22 lg:w-28 lg:h-28 rounded-full bg-[#E51E2B] shadow-2xl transition-transform hover:scale-105" />
-            <div className="w-10 h-10 sm:w-16 sm:h-16 md:w-22 md:h-22 lg:w-28 lg:h-28 rounded-full bg-[#E51E2B] shadow-2xl transition-transform hover:scale-105" />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full bg-[#E51E2B] shadow-2xl transition-transform hover:scale-105" />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full bg-[#E51E2B] shadow-2xl transition-transform hover:scale-105" />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full bg-[#E51E2B] shadow-2xl transition-transform hover:scale-105" />
           </div>
         </motion.div>
       </div>
