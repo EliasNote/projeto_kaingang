@@ -31,25 +31,24 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
   });
 
   // Parallax Abertura / Portal:
-  // Conforme o usuário rola, os troncos abrem caminho para as laterais (esquerda e direita)
-  // Troncos começam mais centralizados (afastados da borda) no topo e abrem suavemente para os lados
+  // Conforme o usuário rola, os troncos abrem caminho e se deslocam suavemente para fora da tela
   const xLeft = useTransform(
     scrollYProgress,
     [0, 0.35, 0.7, 1],
-    [230, 90, -30, -180],
+    ["0%", "-10%", "-25%", "-45%"]
   );
   const xRight = useTransform(
     scrollYProgress,
     [0, 0.35, 0.7, 1],
-    [-230, -90, 30, 180],
+    ["0%", "10%", "25%", "45%"]
   );
-  const yLeft = useTransform(scrollYProgress, [0, 0.5, 1], [-35, 0, 40]);
-  const yRight = useTransform(scrollYProgress, [0, 0.5, 1], [-30, 0, 45]);
-  const scaleLeft = useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1, 1.05]);
+  const yLeft = useTransform(scrollYProgress, [0, 0.5, 1], [-8, 0, 12]);
+  const yRight = useTransform(scrollYProgress, [0, 0.5, 1], [-8, 0, 12]);
+  const scaleLeft = useTransform(scrollYProgress, [0, 0.5, 1], [0.99, 1, 1.02]);
   const scaleRight = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    [0.98, 1, 1.05],
+    [0.99, 1, 1.02],
   );
 
   // Floresta ao fundo acompanhando suavemente logo atrás

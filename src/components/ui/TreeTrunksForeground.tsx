@@ -2,8 +2,8 @@ import React from "react";
 import { motion, MotionValue } from "framer-motion";
 
 interface TreeTrunksForegroundProps {
-  xLeft: MotionValue<number>;
-  xRight: MotionValue<number>;
+  xLeft: MotionValue<string> | MotionValue<number>;
+  xRight: MotionValue<string> | MotionValue<number>;
   yLeft: MotionValue<number>;
   yRight: MotionValue<number>;
   scaleLeft: MotionValue<number>;
@@ -23,9 +23,14 @@ export const TreeTrunksForeground: React.FC<TreeTrunksForegroundProps> = ({
       className="absolute inset-0 pointer-events-none z-10 overflow-hidden select-none"
       aria-hidden="true"
     >
-      {/* Tronco da Esquerda Real (Abertura / Portal para a esquerda com Framer Motion) */}
+      {/* 
+        Tronco da Esquerda:
+        - Abaixo de 640px: -left-32 (mantém proporção ideal mobile).
+        - Entre 640px e 1024px: -left-60 a -left-72 (projetado para fora da tela p/ não cobrir o centro em tablets).
+        - Acima de 1024px: lg:-left-12 xl:left-0 (mantém proporção ideal desktop).
+      */}
       <motion.div
-        className="absolute left-0 w-28 sm:w-40 md:w-56 lg:w-72 xl:w-88 2xl:w-[420px] h-full will-change-transform origin-left"
+        className="absolute -top-[8%] -left-32 sm:-left-60 md:-left-72 lg:-left-12 xl:left-0 h-[116%] w-auto pointer-events-none will-change-transform origin-left"
         style={{
           x: xLeft,
           y: yLeft,
@@ -35,15 +40,20 @@ export const TreeTrunksForeground: React.FC<TreeTrunksForegroundProps> = ({
         <img
           src="/images/tronco_2.png"
           alt=""
-          className="w-full h-full object-cover object-left filter drop-shadow-[12px_0_25px_rgba(0,0,0,0.55)] contrast-105 brightness-95"
+          className="h-full w-auto max-w-none object-contain pointer-events-none filter drop-shadow-[14px_0_25px_rgba(0,0,0,0.65)] contrast-105 brightness-95 select-none"
           referrerPolicy="no-referrer"
           loading="eager"
         />
       </motion.div>
 
-      {/* Tronco da Direita Real (Abertura / Portal para a direita com Framer Motion) */}
+      {/* 
+        Tronco da Direita:
+        - Abaixo de 640px: -right-32 (mantém proporção ideal mobile).
+        - Entre 640px e 1024px: -right-60 a -right-72 (projetado para fora da tela p/ não cobrir o centro em tablets).
+        - Acima de 1024px: lg:-right-12 xl:right-0 (mantém proporção ideal desktop).
+      */}
       <motion.div
-        className="absolute right-0 w-28 sm:w-40 md:w-56 lg:w-72 xl:w-88 2xl:w-[420px] h-full will-change-transform origin-right"
+        className="absolute -top-[8%] -right-32 sm:-right-60 md:-right-72 lg:-right-12 xl:right-0 h-[116%] w-auto pointer-events-none will-change-transform origin-right"
         style={{
           x: xRight,
           y: yRight,
@@ -53,7 +63,7 @@ export const TreeTrunksForeground: React.FC<TreeTrunksForegroundProps> = ({
         <img
           src="/images/tronco_1.png"
           alt=""
-          className="w-full h-full object-cover object-right filter drop-shadow-[-12px_0_25px_rgba(0,0,0,0.55)] contrast-105 brightness-95"
+          className="h-full w-auto max-w-none object-contain pointer-events-none filter drop-shadow-[-14px_0_25px_rgba(0,0,0,0.65)] contrast-105 brightness-95 select-none"
           referrerPolicy="no-referrer"
           loading="eager"
         />
