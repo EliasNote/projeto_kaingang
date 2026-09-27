@@ -10,7 +10,8 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
   return (
     <footer
-      className="w-full bg-[#000000] text-neutral-300 border-t border-neutral-900"
+      id="contato"
+      className="w-full bg-[#000000] text-neutral-300 border-t border-neutral-900 scroll-mt-14 md:scroll-mt-16"
       aria-label="Rodapé"
     >
       {/* Upper Footer com Revelação Suave ao Scroll */}
@@ -22,7 +23,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12"
         >
-          {/* Column 1: Brand & Identity (Ocupa 6 das 12 colunas) */}
+          {/* Coluna 1: Identidade & Marca (6 colunas no desktop) */}
           <div className="lg:col-span-6 space-y-4">
             <div className="flex items-center gap-3">
               <div className="bg-white/10 px-2 py-1 rounded-[3px] flex items-center">
@@ -47,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
             </div>
           </div>
 
-          {/* Column 2: Navigation Links (Ocupa 3 das 12 colunas) */}
+          {/* Coluna 2: Navegação do Site (3 colunas no desktop) */}
           <div className="lg:col-span-3 space-y-3 lg:pl-4">
             <h3 className="text-[11px] sm:text-xs 2xl:text-[13px] uppercase tracking-wider font-bold text-white">
               Navegação do Site
@@ -67,7 +68,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
             </ul>
           </div>
 
-          {/* Column 3: Saberes & Salvaguarda (Ocupa 3 das 12 colunas) */}
+          {/* Coluna 3: Acervo Comunitário (3 colunas no desktop) */}
           <div className="lg:col-span-3 space-y-3 lg:pl-4">
             <h3 className="text-[11px] sm:text-xs 2xl:text-[13px] uppercase tracking-wider font-bold text-white">
               Acervo Comunitário
@@ -106,7 +107,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
                   onClick={() => onSelectNav("sobre")}
                   className="inline-flex items-center gap-1.5 px-3 py-1 -ml-3 hover:text-white hover:bg-neutral-900 transition-all cursor-pointer text-left rounded-[3px]"
                 >
-                  Projeto de Extensão
+                  Sobre o Projeto
                 </button>
               </li>
             </ul>
@@ -114,7 +115,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectNav }) => {
         </motion.div>
       </div>
 
-      {/* Bottom Sub-footer */}
+      {/* Sub-footer Inferior */}
       <div className="border-t border-neutral-900 bg-[#080808] py-5 px-4 sm:px-8 text-[11px] sm:text-xs 2xl:text-[13px] text-neutral-500">
         <div className="max-w-[1380px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <p>

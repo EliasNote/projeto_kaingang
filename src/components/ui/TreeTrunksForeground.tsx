@@ -20,17 +20,18 @@ export const TreeTrunksForeground: React.FC<TreeTrunksForegroundProps> = ({
 }) => {
   return (
     <div
-      className="absolute inset-0 pointer-events-none z-10 overflow-hidden select-none"
+      className="hidden sm:block absolute inset-0 pointer-events-none z-10 overflow-hidden select-none"
       aria-hidden="true"
     >
       {/* 
         Tronco da Esquerda:
-        - Abaixo de 640px: -left-32 (mantém proporção ideal mobile).
-        - Entre 640px e 1024px: -left-60 a -left-72 (projetado para fora da tela p/ não cobrir o centro em tablets).
-        - Acima de 1024px: lg:-left-12 xl:left-0 (mantém proporção ideal desktop).
+        - sm (640px): -left-72 (-288px) -> tela mais apertada, árvore mais para fora
+        - md (768px): md:-left-52 (-208px) -> tela média, entra proporcionalmente
+        - lg (1024px): lg:-left-20 (-80px) -> desktop, portal visível
+        - xl (1280px): xl:left-0 -> tela cheia, posição natural
       */}
       <motion.div
-        className="absolute -top-[8%] -left-32 sm:-left-60 md:-left-72 lg:-left-12 xl:left-0 h-[116%] w-auto pointer-events-none will-change-transform origin-left"
+        className="absolute -top-[8%] sm:-left-72 md:-left-52 lg:-left-20 xl:left-0 h-[116%] w-auto pointer-events-none will-change-transform origin-left"
         style={{
           x: xLeft,
           y: yLeft,
@@ -47,13 +48,14 @@ export const TreeTrunksForeground: React.FC<TreeTrunksForegroundProps> = ({
       </motion.div>
 
       {/* 
-        Tronco da Direita:
-        - Abaixo de 640px: -right-32 (mantém proporção ideal mobile).
-        - Entre 640px e 1024px: -right-60 a -right-72 (projetado para fora da tela p/ não cobrir o centro em tablets).
-        - Acima de 1024px: lg:-right-12 xl:right-0 (mantém proporção ideal desktop).
+        Tronco da Direita (imagem mais larga, recuos ajustados para simetria):
+        - sm (640px): sm:-right-80 (-320px) -> tela apertada, tronco mais para fora
+        - md (768px): md:-right-60 (-240px) -> entra em harmonia com a esquerda
+        - lg (1024px): lg:-right-24 (-96px) -> portal visível
+        - xl (1280px): xl:right-0 -> tela cheia, posição natural
       */}
       <motion.div
-        className="absolute -top-[8%] -right-32 sm:-right-60 md:-right-72 lg:-right-12 xl:right-0 h-[116%] w-auto pointer-events-none will-change-transform origin-right"
+        className="absolute -top-[8%] sm:-right-80 md:-right-60 lg:-right-24 xl:right-0 h-[116%] w-auto pointer-events-none will-change-transform origin-right"
         style={{
           x: xRight,
           y: yRight,

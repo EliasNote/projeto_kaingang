@@ -24,23 +24,22 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
 
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Framer Motion Scroll Progress for Section
+  // Scroll Progress para Parallax
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  // Parallax Abertura / Portal:
-  // Conforme o usuário rola, os troncos abrem caminho e se deslocam suavemente para fora da tela
+  // Parallax Abertura / Portal nos troncos em tablets e desktops
   const xLeft = useTransform(
     scrollYProgress,
     [0, 0.35, 0.7, 1],
-    ["0%", "-10%", "-25%", "-45%"]
+    ["0%", "-10%", "-25%", "-45%"],
   );
   const xRight = useTransform(
     scrollYProgress,
     [0, 0.35, 0.7, 1],
-    ["0%", "10%", "25%", "45%"]
+    ["0%", "10%", "25%", "45%"],
   );
   const yLeft = useTransform(scrollYProgress, [0, 0.5, 1], [-8, 0, 12]);
   const yRight = useTransform(scrollYProgress, [0, 0.5, 1], [-8, 0, 12]);
@@ -51,7 +50,7 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
     [0.99, 1, 1.02],
   );
 
-  // Floresta ao fundo acompanhando suavemente logo atrás
+  // Floresta ao fundo acompanhando suavemente em Parallax
   const scaleForest = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
@@ -81,11 +80,10 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
           referrerPolicy="no-referrer"
           loading="lazy"
         />
-        {/* Camada suave de ambiência florestal */}
         <div className="absolute inset-0 bg-black/15 pointer-events-none" />
       </motion.div>
 
-      {/* 2. FOREGROUND PARALLAX: Abertura / Portal dos Troncos Reais com Framer Motion */}
+      {/* 2. FOREGROUND PARALLAX: Troncos de abertura ativados em telas >= 640px */}
       <TreeTrunksForeground
         xLeft={xLeft}
         xRight={xRight}
@@ -95,10 +93,10 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
         scaleRight={scaleRight}
       />
 
-      {/* 3. CONTENT LAYER: Revelação Suave dos Elementos ao Scroll (Framer Motion Reveal) */}
+      {/* 3. CONTENT LAYER: Card Branco e Foto com Revelação Suave */}
       <div className="relative z-20 max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-20">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12 xl:gap-16">
-          {/* Left: Card Branco com Revelação Suave ('Reveal') */}
+          {/* Card Branco com Tipografia Responsiva */}
           <motion.div
             initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -134,7 +132,6 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
               {isCultural ? content.culturalParagraph : content.paragraph}
             </motion.p>
 
-            {/* Ações / Botões Estilizados e Redesenhados */}
             {onSelectNav && (
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
@@ -145,7 +142,7 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
               >
                 <button
                   type="button"
-                  onClick={() => onSelectNav("visitas-info")}
+                  onClick={() => onSelectNav("visitas")}
                   className="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#8B0000] hover:bg-[#a30000] active:scale-95 text-white text-xs sm:text-sm 2xl:text-base font-bold tracking-wide shadow-md hover:shadow-lg transition-all cursor-pointer rounded-[3px]"
                 >
                   <Compass className="w-4 h-4 text-white/90 group-hover:rotate-45 transition-transform duration-300" />
@@ -165,7 +162,7 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
             )}
           </motion.div>
 
-          {/* Right: Foto com Bordas Arredondadas de 3px */}
+          {/* Foto Lateral com Moldura de 3px */}
           <motion.div
             initial={{ opacity: 0, y: 60, scale: 0.94, filter: "blur(10px)" }}
             whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
