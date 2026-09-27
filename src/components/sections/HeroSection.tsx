@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { IndigenousLogo } from "../ui/IndigenousLogo";
 
 export interface HeroSlide {
   id: string;
@@ -9,45 +8,57 @@ export interface HeroSlide {
   title: string;
 }
 
-const HERO_SLIDES: HeroSlide[] = [
-  {
-    id: "children-seeds",
-    src: "/images/hero.jpg",
-    alt: "Crianças indígenas reunidas na grama ao redor de peneira tradicional com sementes nativas",
-    title: "Saberes Ancestrais & Infância",
+// Carrega dinamicamente todas as imagens da pasta public/images/hero/
+const heroImageModules = import.meta.glob(
+  "/public/images/hero/*.{jpg,jpeg,png,webp,avif,svg,JPG,JPEG,PNG,WEBP,SVG}",
+  { eager: true },
+);
+
+const DYNAMIC_SLIDES: HeroSlide[] = Object.keys(heroImageModules).map(
+  (filePath, index) => {
+    // Transforma /public/images/hero/arquivo.ext em /images/hero/arquivo.ext para servir no navegador
+    const src = filePath.replace(/^\/public/, "");
+    const fileName =
+      filePath
+        .split("/")
+        .pop()
+        ?.replace(/\.[^/.]+$/, "") || `hero-${index}`;
+
+    return {
+      id: `hero-${index}-${fileName}`,
+      src,
+      alt: `Memórias da Escola Indígena - ${fileName}`,
+      title: fileName,
+    };
   },
+);
+
+// Fallback de segurança caso a pasta esteja vazia
+const FALLBACK_SLIDES: HeroSlide[] = [
   {
-    id: "school-classroom",
-    src: "/images/hero_school_class.jpg",
-    alt: "Educador e estudantes indígenas em sala de aula ao ar livre integrada à floresta amazônica",
-    title: "Educação Escolar Indígena Diferenciada",
-  },
-  {
-    id: "youth-learning",
-    src: "/images/hero_youth_learning.jpg",
-    alt: "Jovens indígenas aprendendo artesanato tradicional e catalogação etnobotânica de sementes",
-    title: "Salvaguarda Cultural & Tradição Viva",
-  },
-  {
-    id: "culture-tradition",
+    id: "fallback-amostra",
     src: "/images/amostra.jpeg",
-    alt: "Crianças e jovens indígenas em trajes tradicionais e celebração cultural comunitária",
-    title: "Memórias Vivas & Celebração Comunitária",
+    alt: "Memórias da Escola Indígena",
+    title: "Memórias Vivas & Tradição",
   },
 ];
 
 export const HeroSection: React.FC = () => {
+  const slides = DYNAMIC_SLIDES.length > 0 ? DYNAMIC_SLIDES : FALLBACK_SLIDES;
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
-  // Troca 100% automática e contínua entre as imagens do background a cada 5.5 segundos
+  // Troca automática entre as imagens a cada 5.5 segundos se houver mais de 1 slide
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5500);
-    return () => clearInterval(interval);
-  }, []);
+    if (slides.length <= 1) return;
 
-  const activeSlide = HERO_SLIDES[currentSlideIndex];
+    const interval = setInterval(() => {
+      setCurrentSlideIndex((prev) => (prev + 1) % slides.length);
+    }, 5500);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  const activeSlide = slides[currentSlideIndex] || slides[0];
 
   return (
     <section
@@ -90,7 +101,14 @@ export const HeroSection: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="absolute top-0 left-3 sm:left-6 md:left-10 lg:left-14 xl:left-16 z-20 pointer-events-none"
         >
-          <IndigenousLogo variant="hero-bars" />
+          <div
+            className="flex items-start gap-1.5 sm:gap-2.5 md:gap-3"
+            aria-hidden="true"
+          >
+            <div className="w-4 sm:w-4 md:w-8 lg:w-12 h-14 sm:h-20 md:h-28 lg:h-36 bg-black shadow-lg" />
+            <div className="w-4 sm:w-4 md:w-8 lg:w-12 h-14 sm:h-20 md:h-28 lg:h-36 bg-black shadow-lg" />
+            <div className="w-4 sm:w-4 md:w-8 lg:w-12 h-14 sm:h-20 md:h-28 lg:h-36 bg-black shadow-lg" />
+          </div>
         </motion.div>
 
         {/* Right-Side: 3 Círculos Vermelhos (Exatamente 50% projetados para fora da borda direita) */}
@@ -100,7 +118,14 @@ export const HeroSection: React.FC = () => {
           transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 z-20 pointer-events-none"
         >
-          <IndigenousLogo variant="hero-dots" />
+          <div
+            className="flex flex-col items-center gap-2 sm:gap-3.5 md:gap-4.5 lg:gap-6"
+            aria-hidden="true"
+          >
+            <div className="w-10 h-10 sm:w-16 sm:h-16 md:w-22 md:h-22 lg:w-28 lg:h-28 rounded-full bg-[#E51E2B] shadow-2xl transition-transform hover:scale-105" />
+            <div className="w-10 h-10 sm:w-16 sm:h-16 md:w-22 md:h-22 lg:w-28 lg:h-28 rounded-full bg-[#E51E2B] shadow-2xl transition-transform hover:scale-105" />
+            <div className="w-10 h-10 sm:w-16 sm:h-16 md:w-22 md:h-22 lg:w-28 lg:h-28 rounded-full bg-[#E51E2B] shadow-2xl transition-transform hover:scale-105" />
+          </div>
         </motion.div>
       </div>
     </section>

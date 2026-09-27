@@ -1,38 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { IndigenousLogo } from '../ui/IndigenousLogo';
-import { NAVIGATION_ITEMS } from '../../data/content';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { NAVIGATION_ITEMS } from "../../data/content";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 interface NavbarProps {
   activeSection: string;
   onSelectNav: (id: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  activeSection,
+  onSelectNav,
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [mobileMenuOpen]);
 
   // Handle Escape key to close menu
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && mobileMenuOpen) {
+      if (e.key === "Escape" && mobileMenuOpen) {
         setMobileMenuOpen(false);
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [mobileMenuOpen]);
 
   const handleNavClick = (id: string, e: React.MouseEvent) => {
@@ -47,19 +49,23 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
       <header className="sticky top-0 z-40 w-full bg-[#8B0000] shadow-[0_4px_25px_rgba(0,0,0,0.35)] border-b border-[#730000]">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between h-14 md:h-16">
-            {/* Left Brand: 3 Black Bars + 3 Red Dots */}
+            {/* Left Brand: Logo SVG */}
             <a
               href="#inicio"
-              onClick={(e) => handleNavClick('inicio', e)}
+              onClick={(e) => handleNavClick("inicio", e)}
               className="flex items-center py-1 group focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer rounded-[3px]"
               aria-label="Página Inicial - Memórias da Escola"
             >
-              <IndigenousLogo variant="navbar-logo" />
+              <img
+                src="/images/logo.svg"
+                alt="Memórias da Escola Indígena"
+                className="h-7 sm:h-8 md:h-9 w-auto select-none"
+              />
             </a>
 
             {/* Desktop Navigation Links */}
             <nav
-              className="hidden xl:flex items-center gap-2 2xl:gap-3"
+              className="hidden xl:flex items-center gap-1.5 2xl:gap-3"
               aria-label="Navegação Principal"
             >
               {NAVIGATION_ITEMS.map((item) => {
@@ -69,43 +75,17 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
                     key={item.id}
                     href={item.href}
                     onClick={(e) => handleNavClick(item.id, e)}
-                    className={`group relative px-3.5 py-2 text-[13px] 2xl:text-[14px] font-medium transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer ${
-                      isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white'
+                    className={`group relative px-3 py-2 text-[14px] 2xl:text-[14px] font-medium transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-white cursor-pointer ${
+                      isActive
+                        ? "text-white font-bold"
+                        : "text-white/90 hover:text-white"
                     }`}
                   >
                     <span>{item.label}</span>
                     {/* Borda inferior animada que cresce da esquerda para a direita */}
                     <span
                       className={`absolute bottom-0 left-0 h-[2px] bg-white transition-all duration-300 ease-out origin-left ${
-                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
-                    />
-                  </a>
-                );
-              })}
-            </nav>
-
-            {/* Medium screen navigation (Tablets) */}
-            <nav
-              className="hidden lg:flex xl:hidden items-center gap-1 text-xs font-medium"
-              aria-label="Navegação Tablet"
-            >
-              {NAVIGATION_ITEMS.map((item) => {
-                const isActive = activeSection === item.id;
-                return (
-                  <a
-                    key={item.id}
-                    href={item.href}
-                    onClick={(e) => handleNavClick(item.id, e)}
-                    className={`group relative px-2.5 py-2 transition-colors whitespace-nowrap cursor-pointer ${
-                      isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white'
-                    }`}
-                  >
-                    <span>{item.label}</span>
-                    {/* Borda inferior animada que cresce da esquerda para a direita */}
-                    <span
-                      className={`absolute bottom-0 left-0 h-[2px] bg-white transition-all duration-300 ease-out origin-left ${
-                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
                       }`}
                     />
                   </a>
@@ -114,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
             </nav>
 
             {/* Mobile Traditional Hamburger Button */}
-            <div className="flex lg:hidden items-center">
+            <div className="flex xl:hidden items-center">
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
@@ -136,8 +116,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.22, ease: 'easeOut' }}
-            className="fixed inset-0 z-[100] w-full h-[100dvh] bg-[#8B0000] text-white flex flex-col justify-between overflow-y-auto lg:hidden"
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="fixed inset-0 z-[100] w-full h-[100dvh] bg-[#8B0000] text-white flex flex-col justify-between overflow-y-auto xl:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Menu de Navegação Principal"
@@ -147,11 +127,15 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
               <div className="flex items-center justify-between h-14 sm:h-16 border-b border-white/10">
                 <a
                   href="#inicio"
-                  onClick={(e) => handleNavClick('inicio', e)}
+                  onClick={(e) => handleNavClick("inicio", e)}
                   className="flex items-center py-1 cursor-pointer"
                   aria-label="Página Inicial"
                 >
-                  <IndigenousLogo variant="navbar-logo" />
+                  <img
+                    src="/images/logo.svg"
+                    alt="Memórias da Escola Indígena"
+                    className="h-7 sm:h-8 w-auto select-none"
+                  />
                 </a>
 
                 {/* Close Button com Hover Suave */}
@@ -168,7 +152,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
 
             {/* Menu Links Body (Simples com Animação Fluida no Hover) */}
             <div className="flex-1 max-w-sm w-full mx-auto px-6 py-8 flex flex-col justify-center">
-              <nav className="flex flex-col gap-2.5" aria-label="Links do Menu Mobile">
+              <nav
+                className="flex flex-col gap-2.5"
+                aria-label="Links do Menu Mobile"
+              >
                 {NAVIGATION_ITEMS.map((item, index) => {
                   const isActive = activeSection === item.id;
 
@@ -186,14 +173,16 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onSelectNav }) =>
                       <button
                         type="button"
                         onClick={(e) => handleNavClick(item.id, e)}
-                        className={`group relative w-full text-left px-4 py-3.5 text-lg font-medium transition-colors cursor-pointer flex items-center justify-between overflow-hidden ${
-                          isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white'
+                        className={`group relative w-full text-left px-4 py-3 sm:py-3.5 text-base sm:text-lg font-medium transition-colors cursor-pointer flex items-center justify-between overflow-hidden ${
+                          isActive
+                            ? "text-white font-bold"
+                            : "text-white/80 hover:text-white"
                         }`}
                       >
                         {/* Linha indicadora inferior que cresce da esquerda para a direita no Hover / Ativo */}
                         <span
                           className={`absolute bottom-0 left-0 h-[2px] bg-white transition-all duration-300 ease-out origin-left ${
-                            isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                            isActive ? "w-full" : "w-0 group-hover:w-full"
                           }`}
                         />
 

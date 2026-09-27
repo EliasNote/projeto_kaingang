@@ -116,7 +116,7 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
                 delay: 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-black tracking-tight leading-tight"
+              className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-extrabold text-black tracking-tight leading-tight"
             >
               {isCultural ? content.culturalTitle : content.title}
             </motion.h2>
@@ -130,7 +130,7 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
                 delay: 0.2,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="mt-4 sm:mt-6 md:mt-8 text-neutral-800 text-xs sm:text-sm md:text-base xl:text-[16px] leading-relaxed font-normal"
+              className="mt-4 sm:mt-6 md:mt-8 text-neutral-800 text-sm sm:text-base lg:text-[15.5px] xl:text-[16px] 2xl:text-[17px] leading-relaxed font-normal"
             >
               {isCultural ? content.culturalParagraph : content.paragraph}
             </motion.p>
@@ -147,7 +147,7 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onSelectNav("visitas-info")}
-                  className="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#8B0000] hover:bg-[#a30000] active:scale-95 text-white text-xs sm:text-sm font-bold tracking-wide shadow-md hover:shadow-lg transition-all cursor-pointer rounded-[3px]"
+                  className="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#8B0000] hover:bg-[#a30000] active:scale-95 text-white text-xs sm:text-sm 2xl:text-base font-bold tracking-wide shadow-md hover:shadow-lg transition-all cursor-pointer rounded-[3px]"
                 >
                   <Compass className="w-4 h-4 text-white/90 group-hover:rotate-45 transition-transform duration-300" />
                   <span>Explorar Visitas</span>
@@ -157,7 +157,7 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onSelectNav("historias")}
-                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-neutral-100 hover:bg-neutral-200 active:scale-95 text-neutral-800 text-xs sm:text-sm font-semibold tracking-wide border border-neutral-300/80 transition-all cursor-pointer rounded-[3px]"
+                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-neutral-100 hover:bg-neutral-200 active:scale-95 text-neutral-800 text-xs sm:text-sm 2xl:text-base font-semibold tracking-wide border border-neutral-300/80 transition-all cursor-pointer rounded-[3px]"
                 >
                   <BookOpen className="w-4 h-4 text-neutral-600" />
                   <span>Tradição Oral</span>
