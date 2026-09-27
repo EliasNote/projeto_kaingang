@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { IndigenousLogo } from '../ui/IndigenousLogo';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { IndigenousLogo } from "../ui/IndigenousLogo";
 
 export interface HeroSlide {
   id: string;
@@ -11,28 +11,28 @@ export interface HeroSlide {
 
 const HERO_SLIDES: HeroSlide[] = [
   {
-    id: 'children-seeds',
-    src: '/images/hero.jpg',
-    alt: 'Crianças indígenas reunidas na grama ao redor de peneira tradicional com sementes nativas',
-    title: 'Saberes Ancestrais & Infância',
+    id: "children-seeds",
+    src: "/images/hero.jpg",
+    alt: "Crianças indígenas reunidas na grama ao redor de peneira tradicional com sementes nativas",
+    title: "Saberes Ancestrais & Infância",
   },
   {
-    id: 'school-classroom',
-    src: '/images/hero_school_class.jpg',
-    alt: 'Educador e estudantes indígenas em sala de aula ao ar livre integrada à floresta amazônica',
-    title: 'Educação Escolar Indígena Diferenciada',
+    id: "school-classroom",
+    src: "/images/hero_school_class.jpg",
+    alt: "Educador e estudantes indígenas em sala de aula ao ar livre integrada à floresta amazônica",
+    title: "Educação Escolar Indígena Diferenciada",
   },
   {
-    id: 'youth-learning',
-    src: '/images/hero_youth_learning.jpg',
-    alt: 'Jovens indígenas aprendendo artesanato tradicional e catalogação etnobotânica de sementes',
-    title: 'Salvaguarda Cultural & Tradição Viva',
+    id: "youth-learning",
+    src: "/images/hero_youth_learning.jpg",
+    alt: "Jovens indígenas aprendendo artesanato tradicional e catalogação etnobotânica de sementes",
+    title: "Salvaguarda Cultural & Tradição Viva",
   },
   {
-    id: 'culture-tradition',
-    src: '/images/cultura-tradicao.jpg',
-    alt: 'Crianças e jovens indígenas em trajes tradicionais e celebração cultural comunitária',
-    title: 'Memórias Vivas & Celebração Comunitária',
+    id: "culture-tradition",
+    src: "/images/amostra.jpeg",
+    alt: "Crianças e jovens indígenas em trajes tradicionais e celebração cultural comunitária",
+    title: "Memórias Vivas & Celebração Comunitária",
   },
 ];
 

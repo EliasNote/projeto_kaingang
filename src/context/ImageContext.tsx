@@ -20,7 +20,7 @@ export const IMAGE_SLOTS: ImageSlot[] = [
     key: "nature",
     label: "Foto Seção 1 (Mulher e Árvore Nativa)",
     description: "WhatsApp Image 2026-09-23 at 20.46.33.jpeg",
-    defaultPath: "/images/saberes-natureza.jpg",
+    defaultPath: "/images/mulher-planta.jpeg",
     originalFileNameMatch: [
       "20.46.33.jpeg",
       "20.46.33.jpg",
@@ -33,7 +33,7 @@ export const IMAGE_SLOTS: ImageSlot[] = [
     key: "culture",
     label: "Foto Seção 2 (Jovens e Cântico/Dança Tradicional)",
     description: "WhatsApp Image 2026-09-23 at 20.46.33(1).jpeg",
-    defaultPath: "/images/cultura-tradicao.jpg",
+    defaultPath: "/images/amostra.jpeg",
     originalFileNameMatch: [
       "20.46.33(1)",
       "cultura",

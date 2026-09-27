@@ -20,7 +20,7 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
   const isCultural = mode === "cultural_full";
 
   const bgImageSrc = images.forestBg || "/images/floresta-bg.jpg";
-  const natureImageSrc = images.nature || "/images/saberes-natureza.jpg";
+  const natureImageSrc = images.nature || "/images/mulher-planta.jpeg";
 
   const sectionRef = useRef<HTMLElement>(null);
 
