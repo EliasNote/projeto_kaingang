@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 
 interface HeaderProps {
+  canEdit?: boolean;
   mode: EditorMode;
   onSetMode: (mode: EditorMode) => void;
   tourTitle: string;
@@ -19,6 +20,7 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({
+  canEdit = false,
   mode,
   onSetMode,
   tourTitle,
@@ -33,10 +35,10 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header
       id="tour-app-header"
-      className="w-full bg-[#8B0000] backdrop-blur-md border-b border-[#730000] px-4 sm:px-6 py-3 flex items-center justify-between gap-4 select-none z-40 relative shadow-[0_4px_25px_rgba(0,0,0,0.25)]"
+      className="w-full bg-[#8B0000] backdrop-blur-md border-b border-[#730000] px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-4 select-none z-40 relative shadow-[0_4px_25px_rgba(0,0,0,0.25)]"
     >
       {/* Brand & Tour Title */}
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 flex-1 items-center gap-3">
         <div className="w-8 h-8 rounded-xl bg-white/10 text-white flex items-center justify-center border border-white/15">
           <Compass className="w-4 h-4 text-white" />
         </div>
@@ -112,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Right: Mode Switcher */}
-      <div className="flex items-center gap-2">
+      {canEdit && <div className="flex items-center gap-2">
         {/* View / Editor Pill Switcher */}
         <div className="flex items-center bg-black/15 p-1 rounded-xl border border-white/15">
           <button
@@ -141,7 +143,7 @@ export const Header: React.FC<HeaderProps> = ({
             <span>Editor de Planta</span>
           </button>
         </div>
-      </div>
+      </div>}
     </header>
   );
 };

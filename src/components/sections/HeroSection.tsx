@@ -8,15 +8,14 @@ export interface HeroSlide {
   title: string;
 }
 
-// Carrega dinamicamente todas as imagens da pasta public/images/hero/
-const heroImageModules = import.meta.glob(
+// Descobre os arquivos sem importar as imagens: public é servido pela raiz.
+const heroImageModules = import.meta.glob<string>(
   "/public/images/hero/*.{jpg,jpeg,png,webp,avif,svg,JPG,JPEG,PNG,WEBP,SVG}",
-  { eager: true },
+  { query: "?url", import: "default" },
 );
 
 const DYNAMIC_SLIDES: HeroSlide[] = Object.keys(heroImageModules).map(
   (filePath, index) => {
-    // Transforma /public/images/hero/arquivo.ext em /images/hero/arquivo.ext para servir no navegador
     const src = filePath.replace(/^\/public/, "");
     const fileName =
       filePath

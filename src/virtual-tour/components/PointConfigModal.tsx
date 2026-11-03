@@ -1,3 +1,4 @@
+import { api } from '../../admin/api';
 import React, { useState } from 'react';
 import { Point360, ArtworkHotspot } from '../types';
 import { PRESET_PANOS } from '../utils/proceduralPano';
@@ -44,7 +45,7 @@ export const PointConfigModal: React.FC<PointConfigModalProps> = ({
   const [hotspots, setHotspots] = useState<ArtworkHotspot[]>(point.hotspots || []);
   const isCustomUploaded = Boolean(
     point.panoramaUrl && (
-      point.panoramaUrl.startsWith('data:') ||
+      point.panoramaUrl.startsWith('/api/media/') ||
       point.panoramaUrl.startsWith('http://') ||
       point.panoramaUrl.startsWith('https://') ||
       point.panoramaUrl.startsWith('blob:')
@@ -60,17 +61,17 @@ export const PointConfigModal: React.FC<PointConfigModalProps> = ({
   const [isCalibratorOpen, setIsCalibratorOpen] = useState(onOpenCalibratorDirectly);
   const [editingSpotId, setEditingSpotId] = useState<string | null>(null);
 
-  const processSelectedFile = (file: File) => {
-    if (!file.type.startsWith('image/')) return;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const dataUrl = event.target?.result as string;
-      if (dataUrl) {
-        setPanoramaUrl(dataUrl);
-        setActiveTab('upload');
-      }
-    };
-    reader.readAsDataURL(file);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState('');
+  const processSelectedFile = async (file: File) => {
+    setUploading(true);
+    setUploadError('');
+    try {
+      const result = await api<{url: string}>('/api/admin/media', {method: 'POST', headers: {'Content-Type': file.type}, body: file});
+      setPanoramaUrl(result.url);
+      setActiveTab('upload');
+    } catch (error) { setUploadError(error instanceof Error ? error.message : 'Falha no envio.'); }
+    finally { setUploading(false); }
   };
 
   // Local file upload handling
@@ -273,7 +274,7 @@ export const PointConfigModal: React.FC<PointConfigModalProps> = ({
               </div>
             ) : (
               <div className="space-y-3">
-                {panoramaUrl && (panoramaUrl.startsWith('data:') || panoramaUrl.startsWith('http://') || panoramaUrl.startsWith('https://') || panoramaUrl.startsWith('blob:')) ? (
+                {panoramaUrl && (panoramaUrl.startsWith('/api/media/') || panoramaUrl.startsWith('http://') || panoramaUrl.startsWith('https://') || panoramaUrl.startsWith('blob:')) ? (
                   <div className="border border-neutral-200 rounded-xl p-3.5 bg-neutral-50 space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -419,6 +420,8 @@ export const PointConfigModal: React.FC<PointConfigModalProps> = ({
             </div>
           )}
 
+          {uploadError && <p role="alert" className="text-sm text-red-600">{uploadError}</p>}
+          {uploading && <p role="status" className="text-sm">Enviando imagem…</p>}
           {/* Footer Actions */}
           <div className="flex items-center justify-end gap-3 pt-4 border-t border-neutral-100">
             <button
@@ -429,6 +432,7 @@ export const PointConfigModal: React.FC<PointConfigModalProps> = ({
               Cancelar
             </button>
             <button
+              disabled={uploading}
               id="btn-save-point-config"
               type="button"
               onClick={handleSave}

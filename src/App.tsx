@@ -7,6 +7,7 @@ import { CultureSection } from "./components/sections/CultureSection";
 import { Footer } from "./components/layout/Footer";
 import { ContentMode } from "./types";
 import VirtualVisitsPage from "./VirtualVisitsPage";
+import AdminPage from "./admin/AdminPage";
 
 function MainApp() {
   const [activeSection, setActiveSection] = useState("inicio");
@@ -72,6 +73,8 @@ export default function App() {
     window.addEventListener("popstate", handleLocationChange);
     return () => window.removeEventListener("popstate", handleLocationChange);
   }, []);
+
+  if (pathname === "/painel" || pathname === "/painel/") return <AdminPage />;
 
   if (pathname === "/visitas-virtuais") {
     return <VirtualVisitsPage />;
