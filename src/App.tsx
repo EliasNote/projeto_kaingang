@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImageProvider } from "./context/ImageContext";
 import { HeroSection } from "./components/sections/HeroSection";
 import { Navbar } from "./components/layout/Navbar";
@@ -6,6 +6,7 @@ import { NatureSection } from "./components/sections/NatureSection";
 import { CultureSection } from "./components/sections/CultureSection";
 import { Footer } from "./components/layout/Footer";
 import { ContentMode } from "./types";
+import VirtualVisitsPage from "./VirtualVisitsPage";
 
 function MainApp() {
   const [activeSection, setActiveSection] = useState("inicio");
@@ -16,8 +17,8 @@ function MainApp() {
     if (id === "inicio") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (id === "visitas" || id === "visitas-info") {
-      const el = document.getElementById("visitas");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      window.history.pushState({}, "", "/visitas-virtuais");
+      window.dispatchEvent(new PopStateEvent("popstate"));
     } else if (id === "memorias-escola" || id === "escola") {
       const el = document.getElementById("memorias-escola");
       if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -64,6 +65,18 @@ function MainApp() {
 }
 
 export default function App() {
+  const [pathname, setPathname] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handleLocationChange = () => setPathname(window.location.pathname);
+    window.addEventListener("popstate", handleLocationChange);
+    return () => window.removeEventListener("popstate", handleLocationChange);
+  }, []);
+
+  if (pathname === "/visitas-virtuais") {
+    return <VirtualVisitsPage />;
+  }
+
   return (
     <ImageProvider>
       <MainApp />

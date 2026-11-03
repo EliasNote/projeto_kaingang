@@ -142,11 +142,14 @@ export const NatureSection: React.FC<NatureSectionProps> = ({
               >
                 <button
                   type="button"
-                  onClick={() => onSelectNav("visitas")}
+                  onClick={() => {
+                    window.history.pushState({}, "", "/visitas-virtuais");
+                    window.dispatchEvent(new PopStateEvent("popstate"));
+                  }}
                   className="group inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#8B0000] hover:bg-[#a30000] active:scale-95 text-white text-xs sm:text-sm 2xl:text-base font-bold tracking-wide shadow-md hover:shadow-lg transition-all cursor-pointer rounded-[3px]"
                 >
                   <Compass className="w-4 h-4 text-white/90 group-hover:rotate-45 transition-transform duration-300" />
-                  <span>Explorar Visitas</span>
+                  <span>Explorar Visitas 360°</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </button>
 
